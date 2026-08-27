@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>52 Aulas Prontas de EBD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #1B2436;
+    --navy-deep: #12192A;
+    --paper: #F5EFDE;
+    --paper-dim: #EDE5D0;
+    --ink: #241C14;
+    --gold: #C99A3D;
+    --gold-bright: #E0B75B;
+    --burgundy: #7A3B3B;
+    --blue: #3E6E8E;
+    --sage: #5F7A54;
+    --line: rgba(245,239,222,0.14);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--navy);
+    color:var(--paper);
+    font-family:'Karla', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  section{ position:relative; }
+
+  /* ---------- ribbon bookmark, runs down the spine of the page ---------- */
+  .spine{
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:3px;
+    height:100%;
+    background:linear-gradient(to bottom, transparent, var(--gold) 4%, var(--gold) 96%, transparent);
+    opacity:0.35;
+    pointer-events:none;
+  }
+
+  /* ---------- header / hero ---------- */
+  header.hero{
+    padding:88px 0 96px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    color:var(--gold-bright);
+    font-weight:600;
+    margin-bottom:28px;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:"";
+    width:26px; height:1px;
+    background:var(--gold-bright);
+    opacity:0.6;
+  }
+  h1.headline{
+    font-size:clamp(2.1rem, 5vw, 3.6rem);
+    max-width:820px;
+    margin:0 auto;
+    color:#FBF7EC;
+  }
+  h1.headline em{
+    font-style:italic;
+    color:var(--gold-bright);
+  }
+  .sub{
+    max-width:560px;
+    margin:26px auto 0;
+    color:rgba(245,239,222,0.72);
+    font-size:1.08rem;
+  }
+
+  .cta-btn{
+    display:inline-block;
+    margin-top:40px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    font-family:'Karla', sans-serif;
+    font-weight:800;
+    font-size:1rem;
+    text-decoration:none;
+    padding:18px 34px;
+    border-radius:3px;
+    box-shadow:0 10px 30px -8px rgba(201,154,61,0.55);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border:1px solid rgba(0,0,0,0.08);
+  }
+  .cta-btn:hover{
+    transform:translateY(-2px);
+    background:var(--gold-bright);
+    box-shadow:0 14px 36px -8px rgba(201,154,61,0.7);
+  }
+  .cta-btn:focus-visible{
+    outline:3px solid #FBF7EC;
+    outline-offset:3px;
+  }
+  .cta-sub{
+    display:block;
+    margin-top:14px;
+    font-size:0.8rem;
+    color:rgba(245,239,222,0.5);
+  }
+
+  /* product mockup in hero */
+  .mockup-wrap{
+    margin:56px auto 0;
+    max-width:640px;
+    position:relative;
+  }
+  .mockup-wrap::before{
+    content:"";
+    position:absolute;
+    inset:-10%;
+    background:radial-gradient(ellipse at center, rgba(224,183,91,0.16), transparent 68%);
+    z-index:0;
+  }
+  .mockup-wrap img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    filter:drop-shadow(0 30px 50px rgba(0,0,0,0.45));
+  }
+
+  /* ---------- section titles ---------- */
+  .kicker{
+    font-size:12px;
+    color:var(--gold-bright);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  h2.section-title{
+    font-size:clamp(1.6rem, 3.4vw, 2.3rem);
+    color:#FBF7EC;
+    max-width:640px;
+  }
+  .section-intro{
+    color:rgba(245,239,222,0.68);
+    max-width:560px;
+    margin-top:16px;
+    font-size:1.02rem;
+  }
+
+  /* ---------- steps (o que é isso) ---------- */
+  .steps{
+    padding:96px 0;
+  }
+  .steps-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  .step{
+    padding:34px 26px 0;
+    border-right:1px solid var(--line);
+  }
+  .step:last-child{ border-right:none; }
+  .step .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--gold-bright);
+    margin-bottom:16px;
+    display:block;
+  }
+  .step h3{
+    font-size:1.15rem;
+    color:#FBF7EC;
+    margin-bottom:10px;
+  }
+  .step p{
+    color:rgba(245,239,222,0.65);
+    font-size:0.96rem;
+    margin:0;
+  }
+
+  /* ---------- trimestres (tabbed binder) ---------- */
+  .quarters{
+    padding:20px 0 100px;
+  }
+  .qgrid{
+    margin-top:52px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .qcard{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:3px;
+    padding:0;
+    overflow:hidden;
+    box-shadow:0 16px 34px -18px rgba(0,0,0,0.55);
+    display:flex;
+    flex-direction:column;
+    transition:transform .2s ease;
+  }
+  .qcard:hover{ transform:translateY(-6px); }
+  .qtab{
+    height:9px;
+    width:100%;
+  }
+  .qcard .qbody{
+    padding:26px 22px 28px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .qnum{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .qcard h3{
+    font-size:1.15rem;
+    margin-bottom:10px;
+    line-height:1.25;
+  }
+  .qcard p{
+    font-size:0.9rem;
+    color:rgba(36,28,20,0.68);
+    margin:0;
+    flex:1;
+  }
+  .qcount{
+    margin-top:18px;
+    font-size:0.78rem;
+    font-family:'IBM Plex Mono', monospace;
+    padding-top:14px;
+    border-top:1px solid rgba(36,28,20,0.12);
+  }
+  .t1 .qtab{ background:var(--burgundy); } .t1 .qnum{ color:var(--burgundy); }
+  .t2 .qtab{ background:var(--blue); } .t2 .qnum{ color:var(--blue); }
+  .t3 .qtab{ background:var(--sage); } .t3 .qnum{ color:var(--sage); }
+  .t4 .qtab{ background:var(--gold); } .t4 .qnum{ color:#9a7526; }
+
+  .lesson-note{
+    margin-top:34px;
+    color:rgba(245,239,222,0.6);
+    font-size:0.92rem;
+    max-width:640px;
+  }
+
+  /* ---------- pra quem é ---------- */
+  .forwhom{
+    padding:96px 0;
+    background:var(--navy-deep);
+  }
+  .whom-grid{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 40px;
+  }
+  .whom-item{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .whom-item .check{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:50%;
+    background:rgba(201,154,61,0.16);
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    margin-top:2px;
+  }
+  .whom-item .check svg{ width:11px; height:11px; }
+  .whom-item p{ margin:0; color:rgba(245,239,222,0.85); font-size:0.98rem; }
+
+  /* ---------- como funciona ---------- */
+  .how{ padding:100px 0; }
+  .how-row{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .how-item{
+    text-align:left;
+  }
+  .how-badge{
+    width:44px; height:44px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--gold-bright);
+    font-size:13px;
+    margin-bottom:18px;
+  }
+  .how-item h3{ font-size:1.1rem; color:#FBF7EC; margin-bottom:8px; }
+  .how-item p{ color:rgba(245,239,222,0.65); font-size:0.95rem; margin:0; }
+
+  /* ---------- o que você recebe ---------- */
+  .receive{
+    padding:20px 0 100px;
+  }
+  .receive-panel{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:4px;
+    padding:44px 48px;
+    box-shadow:0 24px 60px -24px rgba(0,0,0,0.6);
+  }
+  .receive-panel h2{
+    color:var(--ink);
+  }
+  .receive-list{
+    margin-top:30px;
+    list-style:none;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px 30px;
+  }
+  .receive-list li{
+    display:flex;
+    gap:12px;
+    padding:13px 0;
+    border-bottom:1px dashed rgba(36,28,20,0.18);
+    font-size:0.95rem;
+  }
+  .receive-list li::before{
+    content:"✓";
+    color:var(--sage);
+    font-weight:800;
+    flex:none;
+  }
+
+  /* ---------- bonus stamps ---------- */
+  .bonus{ padding:36px 0 110px; }
+  .bonus-panel{
+    background:linear-gradient(165deg, rgba(201,154,61,0.14), rgba(201,154,61,0.03));
+    border:1px solid rgba(224,183,91,0.4);
+    border-radius:8px;
+    padding:44px;
+  }
+  .bonus-grid{
+    margin-top:38px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  .bonus-card{
+    position:relative;
+    background:var(--navy-deep);
+    border:1.5px solid var(--gold);
+    border-radius:5px;
+    padding:36px 32px 30px;
+    box-shadow:0 18px 40px -18px rgba(201,154,61,0.35), inset 0 0 0 1px rgba(224,183,91,0.06);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .bonus-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 24px 50px -16px rgba(201,154,61,0.5), inset 0 0 0 1px rgba(224,183,91,0.1);
+  }
+  .stamp{
+    position:absolute;
+    top:-20px; right:24px;
+    background:var(--gold);
+    color:var(--navy-deep);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    padding:7px 12px;
+    border-radius:50%;
+    width:72px; height:72px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    transform:rotate(9deg);
+    box-shadow:0 10px 24px -6px rgba(0,0,0,0.55), 0 0 0 4px var(--navy-deep);
+    line-height:1.15;
+  }
+  .bonus-card h3{
+    font-size:1.25rem;
+    color:#FBF7EC;
+    max-width:82%;
+    margin-bottom:12px;
+  }
+  .bonus-card p{
+    color:rgba(245,239,222,0.68);
+    font-size:0.95rem;
+    margin:0 0 22px;
+  }
+  .bonus-price{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    padding-top:16px;
+    border-top:1px dashed rgba(224,183,91,0.3);
+  }
+  .bonus-price .old{
+    text-decoration:line-through;
+    color:rgba(245,239,222,0.4);
+  }
+  .bonus-price .new{
+    color:var(--gold-bright);
+    font-weight:700;
+  }
+
+  /* ---------- oferta final ---------- */
+  .offer{
+    padding:30px 0 120px;
+  }
+  .offer-panel{
+    background:linear-gradient(165deg, #212C42, #171F32);
+    border:1px solid rgba(224,183,91,0.3);
+    border-radius:6px;
+    padding:56px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .offer-list{
+    list-style:none;
+    padding:0;
+    margin:26px 0 0;
+  }
+  .offer-list li{
+    padding:11px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+    color:rgba(245,239,222,0.85);
+    display:flex;
+    gap:10px;
+  }
+  .offer-list li::before{
+    content:"—";
+    color:var(--gold-bright);
+    flex:none;
+  }
+  .price-block{
+    text-align:center;
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:5px;
+    padding:40px 28px;
+    position:relative;
+  }
+  .price-block .old-price{
+    font-family:'IBM Plex Mono', monospace;
+    text-decoration:line-through;
+    color:rgba(36,28,20,0.45);
+    font-size:0.95rem;
+  }
+  .price-block .new-price{
+    font-family:'Fraunces', serif;
+    font-size:3.1rem;
+    font-weight:700;
+    margin:8px 0 2px;
+    color:var(--burgundy);
+  }
+  .price-block .new-price sup{
+    font-size:1.4rem;
+    top:-1.4em;
+  }
+  .price-block .terms{
+    font-size:0.8rem;
+    color:rgba(36,28,20,0.6);
+    margin-bottom:26px;
+  }
+  .price-block .cta-btn{
+    width:100%;
+    margin-top:0;
+    background:var(--burgundy);
+    color:#FBF7EC;
+    box-shadow:0 12px 30px -10px rgba(122,59,59,0.55);
+  }
+  .price-block .cta-btn:hover{ background:#8f4747; }
+  .guarantee{
+    margin-top:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-size:0.82rem;
+    color:rgba(36,28,20,0.65);
+  }
+
+  footer{
+    padding:44px 0 60px;
+    text-align:center;
+    color:rgba(245,239,222,0.4);
+    font-size:0.8rem;
+    border-top:1px solid var(--line);
+  }
+  footer a{
+    color:var(--gold-bright);
+    text-decoration:none;
+  }
+
+  @media (max-width: 860px){
+    .steps-grid{ grid-template-columns:1fr; }
+    .step{ border-right:none; border-bottom:1px solid var(--line); padding-bottom:28px; margin-bottom:6px; }
+    .qgrid{ grid-template-columns:1fr 1fr; }
+    .whom-grid{ grid-template-columns:1fr; }
+    .how-row{ grid-template-columns:1fr; }
+    .receive-list{ grid-template-columns:1fr; }
+    .bonus-grid{ grid-template-columns:1fr; }
+    .offer-panel{ grid-template-columns:1fr; padding:36px 26px; }
+    .spine{ display:none; }
+  }
+  @media (max-width: 520px){
+    .qgrid{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="spine" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow mono">Material imprimível para professores de EBD · 52 lições · Entrega imediata</span>
+    <h1 class="headline">52 Aulas Prontas de EBD — <em>uma aula pronta</em> pra cada domingo do ano</h1>
+    <p class="sub">Lições, dinâmicas e atividades organizadas por tema bíblico, prontas para imprimir e aplicar. Você abre a aula do domingo sem preparar nada durante a semana.</p>
+
+    <div class="mockup-wrap">
+      <img src="mockup.png" alt="Material 52 Aulas de EBD: caderno impresso, lições em folhas avulsas, e a aula 'Novo Testamento' aberta na tela do notebook, tablet e celular">
+    </div>
+
+    <a href="#oferta" class="cta-btn">Quero as 52 lições — R$ 9,90</a>
+    <span class="cta-sub">Pagamento único · PDF liberado na hora</span>
+  </div>
+</header>
+
+<section class="steps">
+  <div class="wrap">
+    <p class="kicker mono">O que é isso</p>
+    <h2 class="section-title">Não é apostila teológica solta. É a lição pronta pra aplicar no domingo.</h2>
+    <p class="section-intro">As 52 Aulas Prontas de EBD cobrem o ano inteiro, uma lição por domingo, com passagem bíblica, explicação e dinâmica de aplicação prática.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <span class="num mono">01</span>
+        <h3>Abre a lição do domingo</h3>
+        <p>Cada aula é independente, organizada por tema.</p>
+      </div>
+      <div class="step">
+        <span class="num mono">02</span>
+        <h3>Aplica a explicação bíblica</h3>
+        <p>Passagem, contexto e reflexão já preparados.</p>
+      </div>
+      <div class="step">
+        <span class="num mono">03</span>
+        <h3>Fecha com a dinâmica de aplicação</h3>
+        <p>Atividade que conecta a lição à vida prática da turma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quarters">
+  <div class="wrap">
+    <p class="kicker mono">O que vem nas 52 lições</p>
+    <h2 class="section-title">4 trimestres temáticos, 13 lições em cada um</h2>
+
+    <div class="qgrid">
+      <div class="qcard t1">
+        <div class="qtab"></div>
+        <div class="qbody">
+          <span class="qnum mono">Trimestre 1</span>
+          <h3>Antigo Testamento</h3>
+          <p>Histórias e ensinamentos fundamentais do Antigo Testamento.</p>
+          <div class="qcount mono">13 lições</div>
+        </div>
+      </div>
+      <div class="qcard t2">
+        <div class="qtab"></div>
+        <div class="qbody">
+          <span class="qnum mono">Trimestre 2</span>
+          <h3>Novo Testamento</h3>
+          <p>Vida de Jesus e ensinamentos dos evangelhos.</p>
+          <div class="qcount mono">13 lições</div>
+        </div>
+      </div>
+      <div class="qcard t3">
+        <div class="qtab"></div>
+        <div class="qbody">
+          <span class="qnum mono">Trimestre 3</span>
+          <h3>Vida Cristã</h3>
+          <p>Aplicação prática da fé no dia a dia da turma.</p>
+          <div class="qcount mono">13 lições</div>
+        </div>
+      </div>
+      <div class="qcard t4">
+        <div class="qtab"></div>
+        <div class="qbody">
+          <span class="qnum mono">Trimestre 4</span>
+          <h3>Datas Especiais</h3>
+          <p>Lições temáticas pra datas comemorativas do calendário cristão.</p>
+          <div class="qcount mono">13 lições</div>
+        </div>
+      </div>
+    </div>
+    <p class="lesson-note">Cada lição traz passagem bíblica, explicação, pergunta de reflexão e dinâmica de aplicação.</p>
+  </div>
+</section>
+
+<section class="forwhom">
+  <div class="wrap">
+    <p class="kicker mono">Pra quem é</p>
+    <h2 class="section-title">Se você se reconhece em algum desses pontos, o material é pra você.</h2>
+
+    <div class="whom-grid">
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Passa a semana estudando e preparando a lição do domingo.</p>
+      </div>
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Quer material organizado pro ano inteiro, sem lição solta.</p>
+      </div>
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Dá aula pra turma de adultos, jovens ou mista.</p>
+      </div>
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Quer dinâmica de aplicação prática, não só leitura de texto.</p>
+      </div>
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Precisa de lição pronta pra assumir a turma em cima da hora.</p>
+      </div>
+      <div class="whom-item">
+        <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6.5L4.5 9L10 3" stroke="#C99A3D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p>Quer cobrir datas especiais do calendário sem preparar conteúdo extra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <p class="kicker mono">Como funciona</p>
+    <h2 class="section-title">Da compra à sala de aula em três passos</h2>
+
+    <div class="how-row">
+      <div class="how-item">
+        <div class="how-badge">1</div>
+        <h3>Compra</h3>
+        <p>Pagamento único, recebe o PDF na hora.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-badge">2</div>
+        <h3>Escolhe</h3>
+        <p>Escolhe o trimestre e a lição do domingo.</p>
+      </div>
+      <div class="how-item">
+        <div class="how-badge">3</div>
+        <h3>Aplica</h3>
+        <p>Imprime e aplica — a lição já vem pronta do início ao fim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="receive">
+  <div class="wrap">
+    <div class="receive-panel">
+      <p class="kicker mono" style="color:var(--burgundy);">O que você recebe</p>
+      <h2 class="section-title">Tudo dentro de um único PDF, organizado por trimestre</h2>
+      <ul class="receive-list">
+        <li>52 lições completas em PDF, organizadas por trimestre</li>
+        <li>4 blocos temáticos, 13 lições cada</li>
+        <li>Passagem bíblica, explicação e reflexão em cada lição</li>
+        <li>Dinâmica de aplicação prática por lição</li>
+        <li>Formato A4, pronto pra impressão ou uso em tela</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="bonus">
+  <div class="wrap">
+    <div class="bonus-panel">
+      <p class="kicker mono">Bônus inclusos · sem custo extra</p>
+      <h2 class="section-title">Dois materiais de apoio pro ano inteiro</h2>
+
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <span class="stamp">BÔNUS<br>01</span>
+          <h3>Calendário Anual de Temas para Planejar o Ano</h3>
+          <p>Um calendário imprimível com a distribuição das 52 lições ao longo do ano, pra você visualizar o planejamento anual de uma vez.</p>
+          <div class="bonus-price"><span class="old">R$ 17,90</span><span class="new">Incluso no material</span></div>
+        </div>
+        <div class="bonus-card">
+          <span class="stamp">BÔNUS<br>02</span>
+          <h3>Cartelas de Versículos para Memorização</h3>
+          <p>30 cartelas imprimíveis com versículos pra trabalhar memorização com a turma ao longo do ano.</p>
+          <div class="bonus-price"><span class="old">R$ 14,90</span><span class="new">Incluso no material</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="oferta">
+  <div class="wrap">
+    <div class="offer-panel">
+      <div>
+        <p class="kicker mono">Oferta final</p>
+        <h2 class="section-title">Tudo isso por R$ 9,90</h2>
+        <ul class="offer-list">
+          <li>52 lições completas de EBD em PDF</li>
+          <li>Bloco Antigo Testamento — 13 lições completas</li>
+          <li>Bloco Novo Testamento — 13 lições completas</li>
+          <li>Bloco Vida Cristã — 13 lições completas</li>
+          <li>Bloco Datas Especiais — 13 lições completas</li>
+          <li>Passagem bíblica, explicação e dinâmica de aplicação em cada lição</li>
+          <li>Formato A4, pronto pra impressão ou uso em tela</li>
+          <li>Bônus 1 — Calendário Anual de Temas</li>
+          <li>Bônus 2 — Cartelas de Versículos para Memorização</li>
+          <li>Entrega imediata por e-mail</li>
+          <li>Garantia incondicional de 7 dias</li>
+        </ul>
+      </div>
+
+      <div class="price-block">
+        <div class="old-price">De R$ 52,70</div>
+        <div class="new-price"><sup>R$</sup> 9,90</div>
+        <div class="terms">pagamento único</div>
+        <a href="https://pay.cakto.com.br/h5nz3f6_1067352" class="cta-btn">Quero as 52 lições →</a>
+        <div class="guarantee">🛡️ Garantia de 7 dias — sem burocracia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Este material é um recurso de apoio pedagógico para professores de Escola Bíblica Dominical.<br>
+    Garantia incondicional de 7 dias. · <a href="https://pay.cakto.com.br/h5nz3f6_1067352">Acessar checkout</a>
+  </div>
+</footer>
+
+</body>
+</html>
